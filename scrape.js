@@ -3,7 +3,7 @@ const axios = require('axios'); // to get data from web
 const cheerio = require('cheerio'); // to parse web page
 const fs = require('fs'); // to write files with node
 
-const writeStream = fs.createWriteStream('./src/names.js');
+const writeStream = fs.createWriteStream('./src/scriptPartials/names.js');
 
 axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
   const $ = cheerio.load(res.data);
