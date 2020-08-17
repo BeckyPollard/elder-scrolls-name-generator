@@ -1,0 +1,39 @@
+{
+  "name": "quickstart-v2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "template for personal projects for quick setup",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeckyPollard/quickstart-v2.git"
+  },
+  "keywords": [],
+  "author": "Becky Pollard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BeckyPollard/quickstart-v2/issues"
+  },
+  "homepage": "https://github.com/BeckyPollard/quickstart-v2#readme",
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^3.0.0"
+  }
+}
