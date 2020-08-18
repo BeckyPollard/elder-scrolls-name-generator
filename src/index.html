@@ -10,13 +10,42 @@
   </head>
 
   <body>
-    <section>
-      <img src="./assets/images/helloWorld.png" alt="Hello World" />
-      <div>
-        <a href="https://github.com/BeckyPollard">Becky's GitHub</a>
-        <a href="http://beckypollard.com">Becky's Website</a>
-        <a href="./about.html">About Page [test]</a>
+    <header>
+      <div class="wrapper">
+        <h1>Dunmer Name Generator</h1>
       </div>
-    </section>
+    </header>
+    <div class="wrapper">
+      <main>
+        <p class="description">
+          10 first and last name pairs, created from names present in The Elder Scrolls lore. Names
+          collected from <a href="https://en.uesp.net/wiki/Lore:Dunmer_Names">UESP</a>.
+        </p>
+        <div class="generatedNames">
+          <p>Generated names:</p>
+          <ul id="names">
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+            <li>Test Test</li>
+          </ul>
+        </div>
+        <button id="generateNames">Re-Roll Names</button>
+      </main>
+    </div>
+    <footer>
+      <div class="wrapper">
+        <p>
+          Made by Becky Pollard ☆
+          <a href="https://github.com/BeckyPollard/uesp-dumner-name-generator">GitHub</a>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

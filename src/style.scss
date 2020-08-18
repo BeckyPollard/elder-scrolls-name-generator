@@ -1,1 +1,10 @@
 @import './stylePartials/meyerReset.scss';
+@import './stylePartials/typography.scss';
+@import './stylePartials/header.scss';
+@import './stylePartials/main.scss';
+@import './stylePartials/footer.scss';
+
+.wrapper {
+  max-width: 650px;
+  margin: 0 auto;
+}
