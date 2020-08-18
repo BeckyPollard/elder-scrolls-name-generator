@@ -1,0 +1,19 @@
+main {
+  padding: 20px;
+  background: #999;
+  .generatedNames {
+    margin: 0 auto;
+    border: solid 1px black;
+    padding: 20px;
+    ul {
+      text-align: center;
+      li:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  button {
+    margin-top: 20px;
+    cursor: pointer;
+  }
+}
