@@ -1,8 +1,9 @@
 import './style.scss';
-import { helloWorld } from './scriptPartials/helloWorld';
+import { generateNames } from './scriptPartials/generate';
 
 const run = () => {
-  helloWorld();
+  generateNames();
+  document.getElementById('generateNames').addEventListener('click', generateNames);
 };
 
 run();
