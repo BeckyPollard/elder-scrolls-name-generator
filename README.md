@@ -2,6 +2,10 @@
 
 Names scraped from [The Unofficial Elder Scrolls Pages](https://en.uesp.net/wiki/Main_Page) wiki.
 
+### Why
+
+Because sometimes when I see unnamed NPCs I just want to give them a lore-friendly name, but don't want to look too hard for one. I am a lazy.
+
 ### Scraping
 
 The file [scrape.js](./scrape.js) is to be run with node in your terminal, with `node scrape.js`.
@@ -11,7 +15,7 @@ This file connests to the UESP page [Lore:Dunmer Names](https://en.uesp.net/wiki
 - [x] Scrape names from UESP, save to a JavaScript array (names.js).
 - [x] On request (button), generate a first and last name.
 - [ ] Add option to specify character gender.
+- [ ] Style app.
 - [ ] Accessibility audit.
-- [ ] Style app. **(MVP)**
 - [ ] Options for multiple names output quantities.
 - [ ] MAYBE add more races.
