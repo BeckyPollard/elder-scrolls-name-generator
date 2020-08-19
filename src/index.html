@@ -19,24 +19,24 @@
       <main>
         <p class="description">
           10 first and last name pairs, created from names present in The Elder Scrolls lore. Names
-          collected from <a href="https://en.uesp.net/wiki/Lore:Dunmer_Names">UESP</a>.
+          collected from <a href="https://en.uesp.net/wiki/Lore:Dunmer_Names">UESP</a>. Last names
+          include Ashlander family names.
         </p>
         <div class="generatedNames">
           <p>Generated names:</p>
           <ul id="names">
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
-            <li>&#32;</li>
+            <li>Loading names... consulting the libraries of pocrypha...</li>
           </ul>
         </div>
-        <button id="generateNames">Re-Roll Names</button>
+        <form class="options">
+          <input type="radio" id="generateNames-female" name="gender" value="female" />
+          <label for="generateNames-female">Feminine</label><br />
+          <input type="radio" id="generateNames-male" name="gender" value="male" />
+          <label for="generateNames-male">Masculine</label><br />
+          <input type="radio" id="generateNames-all" name="gender" value="other" />
+          <label for="generateNames-all">All</label>
+          <button type="button" id="generateNames">Re-Roll Names</button>
+        </form>
       </main>
     </div>
     <footer>
