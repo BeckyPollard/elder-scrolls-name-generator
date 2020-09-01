@@ -1,18 +1,30 @@
+html {
+  font-size: 62.5%;
+}
+
 body {
-  font-family: $openSans;
+  font-family: $body-txt;
+  -moz-osx-font-smoothing: grayscale;
+  color: $primary;
+  font-size: 1.6rem;
 }
 
 h1,
 h2,
 h3,
-h4 h5,
+h4,
+h5,
 h6 {
-  font-family: $oswald;
+  font-family: $headers-txt;
+}
+
+h1 {
+  font-size: 2.2rem;
 }
 
 p {
   margin-bottom: 20px;
 }
 a {
-  text-decoration: none;
+  color: $primary;
 }

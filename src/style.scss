@@ -5,6 +5,10 @@
 @import './stylePartials/main.scss';
 @import './stylePartials/footer.scss';
 
+body {
+  background: $bg;
+}
+
 .wrapper {
   max-width: 650px;
   margin: 0 auto;
