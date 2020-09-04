@@ -21,31 +21,3 @@ $bodyText: 'Roboto', sans-serif;
     border-bottom: solid 1px $secondary;
   }
 }
-
-@mixin hexagon {
-  -webkit-clip-path: polygon(
-    calc(100% - 20px) 0,
-    100% 50%,
-    calc(100% - 20px) 100%,
-    20px 100%,
-    0 50%,
-    20px 0
-  );
-  clip-path: polygon(
-    calc(100% - 20px) 0,
-    100% 50%,
-    calc(100% - 20px) 100%,
-    20px 100%,
-    0 50%,
-    20px 0
-  );
-  display: block;
-  font-size: 1.4rem;
-  min-height: 3.5rem;
-  padding: 0rem 2.5rem;
-  text-transform: uppercase;
-  background: $black;
-  color: $white;
-  border: none;
-  font-family: $headersText;
-}

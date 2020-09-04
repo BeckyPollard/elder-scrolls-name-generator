@@ -85,7 +85,6 @@ form {
     cursor: pointer;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    @include hexagon;
     &:hover,
     &:focus {
       background: $focus;
