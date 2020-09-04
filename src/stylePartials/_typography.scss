@@ -3,9 +3,9 @@ html {
 }
 
 body {
-  font-family: $body-txt;
+  font-family: $bodyText;
   -moz-osx-font-smoothing: grayscale;
-  color: $primary;
+  color: $black;
   font-size: 1.6rem;
 }
 
@@ -14,17 +14,24 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: $headers-txt;
+h6,
+legend {
+  font-family: $headersText;
 }
 
 h1 {
   font-size: 2.2rem;
+  color: $white;
+}
+
+h2 {
+  font-size: 1.8rem;
+  @include headerLine;
 }
 
 p {
   margin-bottom: 20px;
 }
 a {
-  color: $primary;
+  color: $black;
 }

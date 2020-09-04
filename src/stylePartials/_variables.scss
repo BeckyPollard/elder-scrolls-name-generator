@@ -1,9 +1,22 @@
 // COLOURS
-$bg: #2b2b2b;
-$black: #202020;
-$primary: #fff;
-$secondary: rgb(181, 181, 181);
+$bg: #dfdfdf;
+$black: #2b2b2b;
+$white: #fff;
+$secondary: #b5b5b5;
 
 // TYPOGRAPHY
-$headers-txt: Georgia, 'Times New Roman', Times, serif;
-$body-txt: 'Roboto', sans-serif;
+$headersText: Georgia, 'Times New Roman', Times, serif;
+$bodyText: 'Roboto', sans-serif;
+
+// STYLES
+@mixin headerLine {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1.2rem;
+    left: 0;
+    width: 3.6rem;
+    border-bottom: solid 1px $secondary;
+  }
+}
