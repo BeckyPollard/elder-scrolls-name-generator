@@ -33,12 +33,15 @@
           </ul>
         </div>
         <form class="options">
-          <input type="radio" id="generateNames-female" name="gender" value="female" />
-          <label for="generateNames-female">Feminine</label><br />
-          <input type="radio" id="generateNames-male" name="gender" value="male" />
-          <label for="generateNames-male">Masculine</label><br />
-          <input type="radio" id="generateNames-all" name="gender" value="other" />
-          <label for="generateNames-all">All</label>
+          <fieldset>
+            <legend>Gender:</legend>
+            <input type="radio" id="options-gender-off" name="Off" checked="true" />
+            <label for="options-gender-off">Off</label>
+            <input type="radio" id="options-gender-female" name="Feminine" value="female" />
+            <label for="options-gender-female">Feminine</label>
+            <input type="radio" id="options-gender-male" name="Masculine" value="male" />
+            <label for="options-gender-male">Masculine</label>
+          </fieldset>
           <button type="button" id="generateNames">Re-Roll Names</button>
         </form>
       </main>
