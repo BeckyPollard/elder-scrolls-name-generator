@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <title>Hello World</title>
+    <title>Dunmer Name Generator for The Elder Scrolls</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -23,18 +27,21 @@
           include Ashlander family names.
         </p>
         <div class="generatedNames">
-          <p>Generated names:</p>
+          <h2>Generated names:</h2>
           <ul id="names">
             <li>Loading names... consulting the libraries of pocrypha...</li>
           </ul>
         </div>
         <form class="options">
-          <input type="radio" id="generateNames-female" name="gender" value="female" />
-          <label for="generateNames-female">Feminine</label><br />
-          <input type="radio" id="generateNames-male" name="gender" value="male" />
-          <label for="generateNames-male">Masculine</label><br />
-          <input type="radio" id="generateNames-all" name="gender" value="other" />
-          <label for="generateNames-all">All</label>
+          <fieldset>
+            <legend>Gender:</legend>
+            <input type="radio" id="options-gender-off" name="Off" checked="true" />
+            <label for="options-gender-off">Off</label>
+            <input type="radio" id="options-gender-female" name="Feminine" value="female" />
+            <label for="options-gender-female">Feminine</label>
+            <input type="radio" id="options-gender-male" name="Masculine" value="male" />
+            <label for="options-gender-male">Masculine</label>
+          </fieldset>
           <button type="button" id="generateNames">Re-Roll Names</button>
         </form>
       </main>

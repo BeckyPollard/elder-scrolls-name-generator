@@ -1,8 +1,13 @@
 @import './stylePartials/meyerReset.scss';
+@import './stylePartials/variables.scss';
 @import './stylePartials/typography.scss';
 @import './stylePartials/header.scss';
 @import './stylePartials/main.scss';
 @import './stylePartials/footer.scss';
+
+body {
+  background: $bg;
+}
 
 .wrapper {
   max-width: 650px;
