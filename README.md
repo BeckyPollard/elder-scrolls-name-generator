@@ -15,7 +15,6 @@ This file connests to the UESP page [Lore:Dunmer Names](https://en.uesp.net/wiki
 - [x] Scrape names from UESP, save to a JavaScript array (names.js).
 - [x] On request (button), generate a first and last name.
 - [ ] Add option to specify character gender.
-- [ ] Style app.
+- [x] Style app.
 - [ ] Accessibility audit.
-- [ ] Options for multiple names output quantities.
 - [ ] MAYBE add more races.
