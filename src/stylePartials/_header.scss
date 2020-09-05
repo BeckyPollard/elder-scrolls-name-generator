@@ -3,5 +3,24 @@ header {
   height: 60px;
   line-height: 60px;
   background: $black;
-  display: block;
+  div.wrapper {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      display: inline-block;
+    }
+    .hexagon {
+      background: $bg;
+      color: $black;
+      margin-top: 1.25rem;
+      &:hover,
+      &:focus {
+        background: $focus;
+        color: $black;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        outline: none;
+      }
+    }
+  }
 }
