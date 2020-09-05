@@ -13,3 +13,41 @@ body {
   max-width: 650px;
   margin: 0 auto;
 }
+
+.hexagon {
+  -webkit-clip-path: polygon(
+    calc(100% - 20px) 0,
+    100% 50%,
+    calc(100% - 20px) 100%,
+    20px 100%,
+    0 50%,
+    20px 0
+  );
+  clip-path: polygon(
+    calc(100% - 20px) 0,
+    100% 50%,
+    calc(100% - 20px) 100%,
+    20px 100%,
+    0 50%,
+    20px 0
+  );
+  font-size: 1.4rem;
+  max-height: 3.5rem;
+  line-height: 3.5rem;
+  padding: 0rem 2.5rem;
+  text-transform: uppercase;
+  color: $white;
+  border: none;
+  font-family: $headersText;
+  text-decoration: none;
+}
+
+// Me: "Hoo! Work is so harsh!"
+// Employed: stressed, depressed.
+// Jobless: stressed, depressed.
+//
+// Me: "I hate seasonal affective disorder, yuck!"
+// Winter: sad.
+// Summer: sad.
+//
+// Nope. There's definitely not a deeper problem cooking here, no sir-ee. Enjoying a normal time. Thriving. 🤠

@@ -34,4 +34,12 @@ p {
 }
 a {
   color: $black;
+  &:focus {
+    text-shadow: 1px 0 0 $black;
+    outline: 0;
+  }
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }
