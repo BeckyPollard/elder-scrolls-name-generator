@@ -1,28 +1,27 @@
 //example of partialed scripts
-import { femaleDunmerNames, maleDunmerNames, dunmerNames, familyDunmerNames } from './names';
+import { femaleDunmerNames, maleDunmerNames, allDunmerNames, familyDunmerNames } from './names';
 
 export const generateNames = () => {
   document.getElementById('names').innerHTML = '';
   let generatedNames = [];
 
+  const randomNames = (arr) => {
+    for (let i = 0; i < 10; i++) {
+      let randFirstName = arr[Math.floor(Math.random() * arr.length)];
+      let randLastName = familyDunmerNames[Math.floor(Math.random() * familyDunmerNames.length)];
+      generatedNames.push(`${randFirstName} ${randLastName}`);
+    }
+  }
+
   if (document.getElementById("options-gender-male").checked) {
-    for (let i = 0; i < 10; i++) {
-      let randFirstName = maleDunmerNames[Math.floor(Math.random() * maleDunmerNames.length)];
-      let randLastName = familyDunmerNames[Math.floor(Math.random() * familyDunmerNames.length)];
-      generatedNames.push(`${randFirstName} ${randLastName}`);
-    }
+    let genderArr = maleDunmerNames;
+    randomNames(genderArr);
   } else if (document.getElementById("options-gender-female").checked) {
-    for (let i = 0; i < 10; i++) {
-      let randFirstName = femaleDunmerNames[Math.floor(Math.random() * femaleDunmerNames.length)];
-      let randLastName = familyDunmerNames[Math.floor(Math.random() * familyDunmerNames.length)];
-      generatedNames.push(`${randFirstName} ${randLastName}`);
-    }
+    let genderArr = femaleDunmerNames;
+    randomNames(genderArr);
   } else {
-    for (let i = 0; i < 10; i++) {
-      let randFirstName = dunmerNames[Math.floor(Math.random() * dunmerNames.length)];
-      let randLastName = familyDunmerNames[Math.floor(Math.random() * familyDunmerNames.length)];
-      generatedNames.push(`${randFirstName} ${randLastName}`);
-    }
+    let genderArr = allDunmerNames;
+    randomNames(genderArr);
   }
 
   for (let i = 0; i < generatedNames.length; i++) {
