@@ -2560,6 +2560,8 @@ export const maleDunmerNames = [
   'Xiomara',
 ];
 
+export const dunmerNames = [].concat(femaleDunmerNames, maleDunmerNames);
+
 export const familyDunmerNames = [
   'Adram',
   'Adryn',
