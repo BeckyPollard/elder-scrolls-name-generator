@@ -22,32 +22,30 @@
         >
       </div>
     </header>
-    <div class="wrapper">
-      <main>
-        <p class="description">
-          10 first and last name pairs, created from names present in The Elder Scrolls lore. Names
-          collected from <a href="https://en.uesp.net/wiki/Lore:Dunmer_Names">UESP</a>. Last names
-          include Ashlander family names.
-        </p>
-        <div class="generatedNames">
-          <h2>Generated names:</h2>
-          <ul id="names">
-            <li>Loading names... consulting the libraries of Apocrypha...</li>
-          </ul>
-        </div>
-        <form class="options">
-          <fieldset>
-            <legend>Gender:</legend>
-            <input type="radio" id="options-gender-off" name="gender" checked="true" />
-            <label for="options-gender-off">Off</label>
-            <input type="radio" id="options-gender-female" name="gender" value="female" />
-            <label for="options-gender-female">Feminine</label>
-            <input type="radio" id="options-gender-male" name="gender" value="male" />
-            <label for="options-gender-male">Masculine</label>
-          </fieldset>
-          <button type="button" id="generateNames" class="hexagon">Re-Roll Names</button>
-        </form>
-      </main>
-    </div>
+    <main class="wrapper">
+      <p class="description">
+        10 first and last name pairs, created from names present in The Elder Scrolls lore. Names
+        collected from <a href="https://en.uesp.net/wiki/Lore:Dunmer_Names">UESP</a>. Last names
+        include Ashlander family names.
+      </p>
+      <div class="generatedNames">
+        <h2>Generated names:</h2>
+        <ul id="names">
+          <li>Loading names... consulting the libraries of Apocrypha...</li>
+        </ul>
+      </div>
+      <form class="options">
+        <fieldset>
+          <legend>Gender:</legend>
+          <input type="radio" id="options-gender-off" name="gender" checked="true" />
+          <label for="options-gender-off">Off</label>
+          <input type="radio" id="options-gender-female" name="gender" value="female" />
+          <label for="options-gender-female">Feminine</label>
+          <input type="radio" id="options-gender-male" name="gender" value="male" />
+          <label for="options-gender-male">Masculine</label>
+        </fieldset>
+        <button type="button" id="generateNames" class="hexagon">Re-Roll Names</button>
+      </form>
+    </main>
   </body>
 </html>

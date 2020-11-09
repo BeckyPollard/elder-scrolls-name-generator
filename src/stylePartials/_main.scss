@@ -3,6 +3,9 @@ main {
   background: $bg;
   box-shadow: rgba(0, 0, 0, 0.25) 4px 4px 13px 0px;
   display: block;
+  @media only screen and (max-width: 600px) {
+    box-shadow:none;
+  }
   .generatedNames {
     margin: 0 auto;
     border: solid 1px $secondary;
