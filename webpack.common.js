@@ -12,11 +12,6 @@ module.exports = {
       filename: 'index.html',
       favicon: './src/favicon.ico',
     }),
-    new HtmlWebpackPlugin({
-      template: './src/about.html',
-      filename: 'about.html',
-      favicon: './src/favicon.ico',
-    }),
     // ADD FOR EACH NEW HTML PAGE
     // new HtmlWebpackPlugin({
     //   template: './src/name.html',
