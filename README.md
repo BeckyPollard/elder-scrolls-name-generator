@@ -1,6 +1,8 @@
-# Dunmer Character Name Generator [WIP]
+# Dunmer Character Name Generator [![Netlify Status](https://api.netlify.com/api/v1/badges/1679775e-f0ec-4cef-9612-0bd7edbc735f/deploy-status)](https://app.netlify.com/sites/dunmer-name-generator/deploys)
 
 Names scraped from [The Unofficial Elder Scrolls Pages](https://en.uesp.net/wiki/Main_Page) wiki.
+
+Deployed live on Netlify: [dunmer-name-generator.netlify.app](https://dunmer-name-generator.netlify.app/).
 
 ### Why
 
@@ -14,7 +16,9 @@ This file connests to the UESP page [Lore:Dunmer Names](https://en.uesp.net/wiki
 ### Project Todo
 - [x] Scrape names from UESP, save to a JavaScript array (names.js).
 - [x] On request (button), generate a first and last name.
-- [ ] Add option to specify character gender.
+- [x] Add option to specify character gender.
 - [x] Style app.
-- [ ] Accessibility audit.
-- [ ] MAYBE add more races.
+- [x] Accessibility audit. (Lighthouse: 100)
+
+### Future Tinkering
+- Add more TES races to the name generator!
