@@ -6,6 +6,11 @@ main {
   @media only screen and (max-width: 600px) {
     box-shadow:none;
   }
+  p span{
+    @media only screen and (max-width: 550px) {
+      display :none;
+    }
+  }
   .generatedNames {
     margin: 0 auto;
     border: solid 1px $secondary;
