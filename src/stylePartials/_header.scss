@@ -1,5 +1,4 @@
 header {
-  // padding: 26px 0 23px 0;
   height: 60px;
   line-height: 60px;
   background: $black;
@@ -8,18 +7,14 @@ header {
     justify-content: space-between;
     h1 {
       display: inline-block;
+      margin-right: 20px;
     }
-    .hexagon {
+    a {
       background: $bg;
       color: $black;
       margin-top: 1.25rem;
-      &:hover,
-      &:focus {
-        background: $focus;
-        color: $black;
-        -webkit-transition: all 0.2s ease;
-        transition: all 0.2s ease;
-        outline: none;
+      @media only screen and (max-width: 520px) {
+        display: none;
       }
     }
   }

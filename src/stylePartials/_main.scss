@@ -79,21 +79,11 @@ form {
   }
   label {
     margin-right: 10px;
+    margin-bottom: 2rem;
   }
   button {
-    margin-top: 2rem;
     cursor: pointer;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
     background: $black;
     display: block;
-    &:hover,
-    &:focus {
-      background: $focus;
-      color: $black;
-      -webkit-transition: all 0.2s ease;
-      transition: all 0.2s ease;
-      outline: none;
-    }
   }
 }

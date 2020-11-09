@@ -12,6 +12,7 @@ body {
 .wrapper {
   max-width: 650px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .hexagon {
@@ -40,6 +41,14 @@ body {
   border: none;
   font-family: $headersText;
   text-decoration: none;
+  &:hover,
+  &:focus {
+    background: $focus;
+    color: $black;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    outline: none;
+  }
 }
 
 // Me: "Hoo! Work is so harsh!"
