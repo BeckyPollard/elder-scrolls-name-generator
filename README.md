@@ -1,5 +1,7 @@
 # Dunmer Character Name Generator [![Netlify Status](https://api.netlify.com/api/v1/badges/1679775e-f0ec-4cef-9612-0bd7edbc735f/deploy-status)](https://app.netlify.com/sites/dunmer-name-generator/deploys)
 
+<img src="./preview.png" width="400">
+
 Names scraped from [The Unofficial Elder Scrolls Pages](https://en.uesp.net/wiki/Lore:Dunmer_Names) wiki.
 
 Deployed live on Netlify: [dunmer-name-generator.netlify.app](https://dunmer-name-generator.netlify.app/).
