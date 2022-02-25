@@ -1,17 +1,18 @@
 const path = require('path');
 const common = require('./webpack.common');
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
   output: {
-    filename: '[name]-[contentHash].bundle.js',
+    assetModuleFilename: 'assets/images/[hash][ext]',
+    filename: 'scripts/[name].bundle.js',
     path: path.resolve(__dirname, 'build'),
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name]-[contentHash].css' }),
+    new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
   ],
   module: {
