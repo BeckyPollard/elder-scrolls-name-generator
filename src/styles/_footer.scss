@@ -1,0 +1,16 @@
+footer {
+  width: 100%;
+  background: $black;
+  text-align: center;
+  margin-top: 2rem;
+  @media only screen and (min-height: 695px) {
+    position: absolute;
+    bottom: 0;
+  }
+  a {
+    line-height: 3rem;
+    color: $secondary;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+}

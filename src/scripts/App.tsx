@@ -1,12 +1,12 @@
 import React from 'react';
-import HelloWorld from './components/HelloWorld';
+import Header from './components/Header';
+import Body from './components/Body';
 
 function App() {
-  return (
-    <HelloWorld 
-      greeting='Hello World'
-    />
-  );
+  return (<>
+    <Header />
+    <Body />
+  </>);
 };
 
 export default App;

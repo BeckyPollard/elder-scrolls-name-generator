@@ -1,19 +1,56 @@
 @import './styles/meyerReset.scss';
+@import './styles/variables.scss';
+@import './styles/typography.scss';
+@import './styles/header.scss';
+@import './styles/main.scss';
+@import './styles/footer.scss';
 
 body {
-  background: pink;
+  background: $secondary;
+  @media only screen and (max-width: 600px) {
+    background: $bg;
+  }
+}
 
-  section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 50px;
-    text-align: center;
+.wrapper {
+  max-width: calc(65rem - 4rem);
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 
-    h1, div {
-      margin: 20px 0;
-      width: 100%;
-    }
+.hexagon {
+  -webkit-clip-path: polygon(
+    calc(100% - 20px) 0,
+    100% 50%,
+    calc(100% - 20px) 100%,
+    20px 100%,
+    0 50%,
+    20px 0
+  );
+  clip-path: polygon(
+    calc(100% - 20px) 0,
+    100% 50%,
+    calc(100% - 20px) 100%,
+    20px 100%,
+    0 50%,
+    20px 0
+  );
+  font-size: 1.4rem;
+  max-height: 3.5rem;
+  line-height: 3.5rem;
+  padding: 0rem 2.5rem;
+  text-transform: uppercase;
+  color: $white;
+  border: none;
+  font-family: $headersText;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    background: $focus;
+    color: $black;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    outline: none;
   }
 }
