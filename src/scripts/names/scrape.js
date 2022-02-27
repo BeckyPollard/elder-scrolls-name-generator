@@ -4,14 +4,16 @@ const cheerio = require('cheerio'); // to parse web page
 const fs = require('fs'); // to write files with node
 
 // files to write:
-const dunmerNames = fs.createWriteStream('./dunmer.js');
 const altmerNames = fs.createWriteStream('./altmer.js');
-const orcNames = fs.createWriteStream('./orc.js');
+const argonianNames = fs.createWriteStream('./argonian.js');
 const bosmerNames = fs.createWriteStream('./bosmer.js');
-const imperialNames = fs.createWriteStream('./imperial.js');
-const redguardNames = fs.createWriteStream('./redguard.js');
 const bretonNames = fs.createWriteStream('./breton.js');
+const dunmerNames = fs.createWriteStream('./dunmer.js');
+const imperialNames = fs.createWriteStream('./imperial.js');
+const khajiitNames = fs.createWriteStream('./khajiit.js');
 const nordNames = fs.createWriteStream('./nord.js');
+const orcNames = fs.createWriteStream('./orc.js');
+const redguardNames = fs.createWriteStream('./redguard.js');
 
 // GET NAMES
 //// DUNMER NAMES
@@ -80,7 +82,8 @@ axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
   const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
   const uniqueFamilyNames = namesFamily.filter(onlyUniqueNames);
 
-  dunmerNames.write(`export const femaleDunmerNames = [${uniqueFemaleNames}]; \n\n`);
-  dunmerNames.write(`export const maleDunmerNames = [${uniqueMaleNames}]; \n\n`);
-  dunmerNames.write(`export const familyDunmerNames = [${uniqueFamilyNames}]; \n`);
+  dunmerNames.write(`export const femaleNames = [${uniqueFemaleNames}]; \n\n`);
+  dunmerNames.write(`export const maleNames = [${uniqueMaleNames}]; \n\n`);
+  dunmerNames.write(`export const allNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+  dunmerNames.write(`export const familyNames = [${uniqueFamilyNames}]; \n`);
 });
