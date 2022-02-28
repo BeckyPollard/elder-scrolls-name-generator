@@ -43,7 +43,7 @@ export default function Generator() {
             randLastName = names.nordFamilyNames[Math.floor(Math.random() * names.nordFamilyNames.length)];
             generatedNames.push(`${randFirstName} ${randLastName}`);
             break;
-          case('orc'): //special family name prefixes
+          case('orc'): //orc family name prefixes
             const prefixesMasc = ['gro-', 'gro-', 'gro-', 'gro-', 'gor-']; //gor is rare
             const prefixes = ['gra-', 'gra-', 'gra-', 'gra-', 'gro-', 'gro-', 'gro-', 'gor-']; //keeping gor rare idk
             if (gender === 'female') {
@@ -52,12 +52,24 @@ export default function Generator() {
             if (gender === 'male') {
               const prefix = prefixesMasc[Math.floor(Math.random() * prefixesMasc.length)]
               randLastName = `${prefix}${names.orcMaleNames[Math.floor(Math.random() * names.orcMaleNames.length)]}`;
-            }
-            if (gender === 'off') {
+            } else {
               const prefix = prefixes[Math.floor(Math.random() * prefixes.length)]
               randLastName = `${prefix}${names.orcAllNames[Math.floor(Math.random() * names.orcAllNames.length)]}`;
             }
             generatedNames.push(`${randFirstName} ${randLastName}`);
+            break;
+            case('redguard'): //redguard, sometimes family name, sometimes with prefixes
+              const familyName = Math.floor(Math.random() * 5);
+              if (familyName === 3) {
+                randLastName = names.redguardFamilyNames[Math.floor(Math.random() * names.redguardFamilyNames.length)];
+                generatedNames.push(`${randFirstName} ${randLastName}`);
+              } else if (familyName === 4) {
+                const prefix = ['at-', 'af-'][(Math.floor(Math.random() * 2))];
+                randLastName = `${prefix}${names.redguardAllNames[Math.floor(Math.random() * names.redguardAllNames.length)]}`;
+                generatedNames.push(`${randFirstName} ${randLastName}`);
+              } else {
+                generatedNames.push(`${randFirstName}`);
+              }
             break;
         };
       };
@@ -93,6 +105,9 @@ export default function Generator() {
         case('orc'):
           setGeneratedNamed(randomNames(names.orcFemaleNames));
           break;  
+        case('redguard'):
+          setGeneratedNamed(randomNames(names.redguardFemaleNames));
+          break;  
       }
     } else if (gender === 'male') {
       switch(race) {
@@ -123,6 +138,9 @@ export default function Generator() {
         case('orc'):
           setGeneratedNamed(randomNames(names.orcMaleNames));
           break;
+        case('redguard'):
+          setGeneratedNamed(randomNames(names.redguardMaleNames));
+          break;
       }
     } else {
       switch(race) {
@@ -152,6 +170,9 @@ export default function Generator() {
           break;
         case('orc'):
           setGeneratedNamed(randomNames(names.orcAllNames));
+          break;
+        case('redguard'):
+          setGeneratedNamed(randomNames(names.redguardAllNames));
           break;
       };
     };
@@ -289,6 +310,15 @@ export default function Generator() {
             value='orc'
           />
           <label htmlFor='options-race-orc'>Orc</label>
+
+          <input
+            type='radio'
+            id='options-race-redguard'
+            name='race'
+            onChange={(e) => setSelectedRace(e.target.value)}
+            value='redguard'
+          />
+          <label htmlFor='options-race-redguard'>Redguard</label>
         </fieldset>
 
         <button

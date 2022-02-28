@@ -37,3 +37,8 @@ export const nordFamilyNames = [string];
 export const orcFemaleNames = [string];
 export const orcMaleNames = [string];
 export const orcAllNames = [string];
+
+export const redguardFemaleNames = [string];
+export const redguardMaleNames = [string];
+export const redguardAllNames = [string];
+export const redguardFamilyNames = [string];

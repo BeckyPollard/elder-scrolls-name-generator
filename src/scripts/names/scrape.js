@@ -406,7 +406,7 @@ axios.get('https://en.uesp.net/wiki/Lore:Khajiit_Names').then((res) => {
   names.write(`export const khajiitAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
 });
 
-//// Nord NAMES
+//// NORD NAMES
 axios.get('https://en.uesp.net/wiki/Lore:Nord_Names').then((res) => {
   const $ = cheerio.load(res.data);
 
@@ -474,4 +474,64 @@ axios.get('https://en.uesp.net/wiki/Lore:Nord_Names').then((res) => {
   names.write(`export const nordMaleNames = [${uniqueMaleNames}]; \n\n`);
   names.write(`export const nordAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
   names.write(`export const nordFamilyNames = [${uniqueFamilyNames}]; \n\n`);
+});
+
+//// REDGUARD NAMES
+axios.get('https://en.uesp.net/wiki/Lore:Redguard_Names').then((res) => {
+  const $ = cheerio.load(res.data);
+
+  const namesFemale = [];
+  $('#Female_Redguard_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesFemale.push(`"${name}"`);
+      }
+    });
+  const namesMale = [];
+  $('#Male_Redguard_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesMale.push(`"${name}"`);
+      }
+    });
+  const namesFamily = [];
+  const deleteTheseNames = [
+    'The Unbowed', 'The Unveiled', 'Blakeley', 'Dunestrider', 'the Deathless', 'the Generous', 'the Warbler', 'the Red', 'the Lofty', 'of the Nine Golden Towers', 'the Seafarer', 'the Stringent', '-Who-Moved-Dunes'
+  ];
+  $('#Redguard_Family_Names_and_Derivation_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      if(deleteTheseNames.indexOf(name) !== -1) { //soft-check remove titles, like "Riza the Deathless"
+        return;
+      };
+      if(name.length > 1) {
+        namesFamily.push(`"${name}"`);
+      };
+    });
+
+  // remove dup names
+  const onlyUniqueNames = (val, index, test) => {
+    return test.indexOf(val) === index;
+  };
+  const uniqueFemaleNames = namesFemale.filter(onlyUniqueNames);
+  const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
+  const uniqueFamilyNames = namesFamily.filter(onlyUniqueNames);
+
+  names.write(`export const redguardFemaleNames = [${uniqueFemaleNames}]; \n\n`);
+  names.write(`export const redguardMaleNames = [${uniqueMaleNames}]; \n\n`);
+  names.write(`export const redguardAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+  names.write(`export const redguardFamilyNames = [${uniqueFamilyNames}]; \n\n`);
 });
