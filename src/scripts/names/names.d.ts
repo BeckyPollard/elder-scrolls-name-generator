@@ -2,6 +2,10 @@ export const altmerFemaleNames = [string];
 export const altmerMaleNames = [string];
 export const altmerAllNames = [string];
 
+export const argonianFemaleNames = [string];
+export const argonianMaleNames = [string];
+export const argonianAllNames = [string];
+
 export const bosmerFemaleNames = [string];
 export const bosmerMaleNames = [string];
 export const bosmerAllNames = [string];

@@ -49,6 +49,51 @@ axios.get('https://en.uesp.net/wiki/Lore:Altmer_Names').then((res) => {
   names.write(`export const altmerAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
 });
 
+//// ARGONIAN NAMES
+axios.get('https://en.uesp.net/wiki/Lore:Argonian_Names').then((res) => {
+  const $ = cheerio.load(res.data);
+
+  // GET NAMES BY GENDER
+  const namesFemale = [];
+  $('#Female_Argonian_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesFemale.push(`"${name}"`);
+      }
+    });
+  const namesMale = [];
+  $('#Male_Argonian_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push junk check
+      if(name === "J'Ram-Dar") {  //this is an argonian with a khajiit name
+        return;
+      };
+      if(name.length > 1) {
+        namesMale.push(`"${name}"`);
+      }
+    });
+
+  // remove dup names
+  const onlyUniqueNames = (val, index, test) => {
+    return test.indexOf(val) === index;
+  };
+  const uniqueFemaleNames = namesFemale.filter(onlyUniqueNames);
+  const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
+
+  names.write(`export const argonianFemaleNames = [${uniqueFemaleNames}]; \n\n`);
+  names.write(`export const argonianMaleNames = [${uniqueMaleNames}]; \n\n`);
+  names.write(`export const argonianAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+});
+
 //// BOSMER NAMES
 axios.get('https://en.uesp.net/wiki/Lore:Bosmer_Names').then((res) => {
   const $ = cheerio.load(res.data);

@@ -20,6 +20,10 @@ export default function Generator() {
             // no family names
             generatedNames.push(`${randFirstName}`);
             break;
+          case('argonian'):
+            // no family names
+            generatedNames.push(`${randFirstName}`);
+            break;
           case('dunmer'):
             randLastName = names.dunmerFamilyNames[Math.floor(Math.random() * names.dunmerFamilyNames.length)];
             generatedNames.push(`${randFirstName} ${randLastName}`);
@@ -54,6 +58,9 @@ export default function Generator() {
         case('altmer'):
           setGeneratedNamed(randomNames(names.altmerFemaleNames));
           break;
+        case('argonian'):
+          setGeneratedNamed(randomNames(names.argonianFemaleNames));
+          break;
         case('bosmer'):
           setGeneratedNamed(randomNames(names.bosmerFemaleNames));
           break;
@@ -69,6 +76,9 @@ export default function Generator() {
         case('altmer'):
           setGeneratedNamed(randomNames(names.altmerMaleNames));
           break;
+        case('argonian'):
+          setGeneratedNamed(randomNames(names.argonianMaleNames));
+          break;
         case('bosmer'):
           setGeneratedNamed(randomNames(names.bosmerMaleNames));
           break;
@@ -83,6 +93,9 @@ export default function Generator() {
       switch(race) {
         case('altmer'):
           setGeneratedNamed(randomNames(names.altmerAllNames));
+          break;
+        case('argonian'):
+          setGeneratedNamed(randomNames(names.argonianAllNames));
           break;
         case('bosmer'):
           setGeneratedNamed(randomNames(names.bosmerAllNames));
@@ -155,6 +168,15 @@ export default function Generator() {
             onChange={(e) => setSelectedRace(e.target.value)}
           />
           <label htmlFor='options-race-altmer'>Altmer</label>
+
+          <input
+            type='radio'
+            id='options-race-argonian'
+            name='race'
+            value='argonian'
+            onChange={(e) => setSelectedRace(e.target.value)}
+          />
+          <label htmlFor='options-race-argonian'>Argonian</label>
 
           <input
             type='radio'
