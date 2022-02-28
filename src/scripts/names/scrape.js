@@ -136,6 +136,63 @@ axios.get('https://en.uesp.net/wiki/Lore:Bosmer_Names').then((res) => {
   names.write(`export const bosmerAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
 });
 
+//// BRETON NAMES
+axios.get('https://en.uesp.net/wiki/Lore:Breton_Names').then((res) => {
+  const $ = cheerio.load(res.data);
+
+  const namesFemale = [];
+  $('#Female_Breton_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesFemale.push(`"${name}"`);
+      }
+    });
+  const namesMale = [];
+  $('#Male_Breton_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesMale.push(`"${name}"`);
+      }
+    });
+
+  // GET FAMILY NAMES
+  const namesFamily = [];
+  $('#Breton_Family_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 2 && name !== 'tomb') {
+        namesFamily.push(`"${name}"`);
+      }
+    });
+
+  // remove dup names
+  const onlyUniqueNames = (val, index, test) => {
+    return test.indexOf(val) === index;
+  };
+  const uniqueFemaleNames = namesFemale.filter(onlyUniqueNames);
+  const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
+  const uniqueFamilyNames = namesFamily.filter(onlyUniqueNames);
+
+  names.write(`export const bretonFemaleNames = [${uniqueFemaleNames}]; \n\n`);
+  names.write(`export const bretonMaleNames = [${uniqueMaleNames}]; \n\n`);
+  names.write(`export const bretonAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+  names.write(`export const bretonFamilyNames = [${uniqueFamilyNames}]; \n\n`);
+});
+
 //// DUNMER NAMES
 axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
   const $ = cheerio.load(res.data);

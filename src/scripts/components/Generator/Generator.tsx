@@ -24,6 +24,10 @@ export default function Generator() {
             // no family names
             generatedNames.push(`${randFirstName}`);
             break;
+          case('breton'):
+            randLastName = names.bretonFamilyNames[Math.floor(Math.random() * names.bretonFamilyNames.length)];
+            generatedNames.push(`${randFirstName} ${randLastName}`);
+            break;
           case('dunmer'):
             randLastName = names.dunmerFamilyNames[Math.floor(Math.random() * names.dunmerFamilyNames.length)];
             generatedNames.push(`${randFirstName} ${randLastName}`);
@@ -67,6 +71,9 @@ export default function Generator() {
         case('bosmer'):
           setGeneratedNamed(randomNames(names.bosmerFemaleNames));
           break;
+        case('breton'):
+          setGeneratedNamed(randomNames(names.bretonFemaleNames));
+          break;
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerFemaleNames));
           break;
@@ -91,6 +98,9 @@ export default function Generator() {
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerMaleNames));
           break;
+        case('breton'):
+          setGeneratedNamed(randomNames(names.bretonMaleNames));
+          break;
         case('khajiit'):
           setGeneratedNamed(randomNames(names.khajiitMaleNames));
           break;
@@ -108,6 +118,9 @@ export default function Generator() {
           break;
         case('bosmer'):
           setGeneratedNamed(randomNames(names.bosmerAllNames));
+          break;
+        case('breton'):
+          setGeneratedNamed(randomNames(names.bretonAllNames));
           break;
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerAllNames));
@@ -201,6 +214,15 @@ export default function Generator() {
 
           <input
             type='radio'
+            id='options-race-breton'
+            name='race'
+            value='breton'
+            onChange={(e) => setSelectedRace(e.target.value)}
+          />
+          <label htmlFor='options-race-breton'>Breton</label>
+
+          <input
+            type='radio'
             id='options-race-dunmer'
             name='race'
             value='dunmer'
@@ -225,7 +247,7 @@ export default function Generator() {
             onChange={(e) => setSelectedRace(e.target.value)}
             value='orc'
           />
-          <label htmlFor='options-race-orc'>Orsimer</label>
+          <label htmlFor='options-race-orc'>Orc</label>
         </fieldset>
 
         <button

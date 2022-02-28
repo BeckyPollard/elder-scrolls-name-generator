@@ -10,6 +10,11 @@ export const bosmerFemaleNames = [string];
 export const bosmerMaleNames = [string];
 export const bosmerAllNames = [string];
 
+export const bretonFemaleNames = [string];
+export const bretonMaleNames = [string];
+export const bretonAllNames = [string];
+export const bretonFamilyNames = [string];
+
 export const dunmerFemaleNames = [string];
 export const dunmerMaleNames = [string];
 export const dunmerAllNames = [string];
