@@ -4,17 +4,6 @@ const cheerio = require('cheerio'); // to parse web page
 const fs = require('fs'); // to write files with node
 
 // files to write:
-// const altmerNames = fs.createWriteStream('./altmer.js');
-// const argonianNames = fs.createWriteStream('./argonian.js');
-// const bosmerNames = fs.createWriteStream('./bosmer.js');
-// const bretonNames = fs.createWriteStream('./breton.js');
-// const dunmerNames = fs.createWriteStream('./dunmer.js');
-// const imperialNames = fs.createWriteStream('./imperial.js');
-// const khajiitNames = fs.createWriteStream('./khajiit.js');
-// const nordNames = fs.createWriteStream('./nord.js');
-// const orcNames = fs.createWriteStream('./orc.js');
-// const redguardNames = fs.createWriteStream('./redguard.js');
-
 const names = fs.createWriteStream('./names.js');
 
 // GET NAMES

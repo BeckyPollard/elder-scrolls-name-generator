@@ -1,32 +1,105 @@
 import React, {useState, useEffect} from 'react';
-import * as dunmerNames from '../../names/dunmer';
+import * as names from '../../names/names';
 
 export default function Generator() {
   const [selectedGender, setSelectedGender] = useState<string>('off');
+  const [selectedRace, setSelectedRace] = useState<string>('dunmer');
   const [generatedNames, setGeneratedNamed] = useState<any>([]);
 
-  const generateNames = () => {
+  const generateNames = (race: string, gender: string) => {
     const randomNames = (arr: string[]) => {
       let generatedNames: string[] = [];
+
       for (let i = 0; i < 10; i++) {
         let randFirstName = arr[Math.floor(Math.random() * arr.length)];
-        let randLastName = dunmerNames.familyNames[Math.floor(Math.random() * dunmerNames.familyNames.length)];
-        generatedNames.push(`${randFirstName} ${randLastName}`);
-      }
+        let randLastName;
+
+        // handle family names
+        switch(race) {
+          case('altmer'):
+            // no family names
+            generatedNames.push(`${randFirstName}`);
+            break;
+          case('dunmer'):
+            randLastName = names.dunmerFamilyNames[Math.floor(Math.random() * names.dunmerFamilyNames.length)];
+            generatedNames.push(`${randFirstName} ${randLastName}`);
+            break;
+          case('bosmer'):
+            generatedNames.push(`${randFirstName}`);
+            break;
+          case('orc'):
+            const prefixesMasc = ['gro-', 'gro-', 'gro-', 'gro-', 'gor-']; //gor is rare
+            const prefixes = ['gra-', 'gra-', 'gra-', 'gra-', 'gro-', 'gro-', 'gro-', 'gor-']; //keeping gor rare idk
+            if (gender === 'female') {
+              randLastName = `gra-${names.orcFemaleNames[Math.floor(Math.random() * names.orcFemaleNames.length)]}`;
+            }
+            if (gender === 'male') {
+              const prefix = prefixesMasc[Math.floor(Math.random() * prefixesMasc.length)]
+              randLastName = `${prefix}${names.orcMaleNames[Math.floor(Math.random() * names.orcMaleNames.length)]}`;
+            }
+            if (gender === 'off') {
+              const prefix = prefixes[Math.floor(Math.random() * prefixes.length)]
+              randLastName = `${prefix}${names.orcAllNames[Math.floor(Math.random() * names.orcAllNames.length)]}`;
+            }
+            generatedNames.push(`${randFirstName} ${randLastName}`);
+            break;
+        };
+      };
+      
       return generatedNames;
-    }
-    if (selectedGender === 'female') {
-      setGeneratedNamed(randomNames(dunmerNames.femaleNames));
-    } else if (selectedGender === 'male') {
-      setGeneratedNamed(randomNames(dunmerNames.maleNames));
+    };
+
+    if (gender === 'female') {
+      switch(race) {
+        case('altmer'):
+          setGeneratedNamed(randomNames(names.altmerFemaleNames));
+          break;
+        case('bosmer'):
+          setGeneratedNamed(randomNames(names.bosmerFemaleNames));
+          break;
+        case('dunmer'):
+          setGeneratedNamed(randomNames(names.dunmerFemaleNames));
+          break;
+        case('orc'):
+          setGeneratedNamed(randomNames(names.orcFemaleNames));
+          break;
+      }
+    } else if (gender === 'male') {
+      switch(race) {
+        case('altmer'):
+          setGeneratedNamed(randomNames(names.altmerMaleNames));
+          break;
+        case('bosmer'):
+          setGeneratedNamed(randomNames(names.bosmerMaleNames));
+          break;
+        case('dunmer'):
+          setGeneratedNamed(randomNames(names.dunmerMaleNames));
+          break;
+        case('orc'):
+          setGeneratedNamed(randomNames(names.orcMaleNames));
+          break;
+      }
     } else {
-      setGeneratedNamed(randomNames(dunmerNames.allNames));
-    }
-  }
+      switch(race) {
+        case('altmer'):
+          setGeneratedNamed(randomNames(names.altmerAllNames));
+          break;
+        case('bosmer'):
+          setGeneratedNamed(randomNames(names.bosmerAllNames));
+          break;
+        case('dunmer'):
+          setGeneratedNamed(randomNames(names.dunmerAllNames));
+          break;
+        case('orc'):
+          setGeneratedNamed(randomNames(names.orcAllNames));
+          break;
+      };
+    };
+  };
 
   useEffect(() => {
-    generateNames();
-  }, [selectedGender])
+    generateNames(selectedRace, selectedGender);
+  }, [selectedGender, selectedRace])
 
   return (
     <>
@@ -71,22 +144,53 @@ export default function Generator() {
           <label htmlFor='options-gender-male'>Masculine</label>
         </fieldset>
 
-        {/* <fieldset>
-          <legend>Race: [WIP]</legend>
-          <input type='radio' id='options-race-altmer' name='race' value='altmer' />
+        {/* RACE MENU */}
+        <fieldset>
+          <legend>Race:</legend>
+          <input
+            type='radio'
+            id='options-race-altmer'
+            name='race'
+            value='altmer'
+            onChange={(e) => setSelectedRace(e.target.value)}
+          />
           <label htmlFor='options-race-altmer'>Altmer</label>
-          <input type='radio' id='options-race-argonian' name='race' value='argonian' />
-          <label htmlFor='options-race-argonian'>Argonian</label>
-          <input type='radio' id='options-race-bosmer' name='race' value='bosmer' />
+
+          <input
+            type='radio'
+            id='options-race-bosmer'
+            name='race'
+            onChange={(e) => setSelectedRace(e.target.value)}
+            value='bosmer'
+          />
           <label htmlFor='options-race-bosmer'>Bosmer</label>
-        </fieldset> */}
+
+          <input
+            type='radio'
+            id='options-race-dunmer'
+            name='race'
+            value='dunmer'
+            onChange={(e) => setSelectedRace(e.target.value)}
+            defaultChecked={selectedRace === 'dunmer'}
+          />
+          <label htmlFor='options-race-dunmer'>Dunmer</label>
+
+          <input
+            type='radio'
+            id='options-race-orc'
+            name='race'
+            onChange={(e) => setSelectedRace(e.target.value)}
+            value='orc'
+          />
+          <label htmlFor='options-race-orc'>Orsimer</label>
+        </fieldset>
 
         <button
           type='button'
           id='generateNames'
           className='hexagon'
           value={selectedGender}
-          onClick={() => generateNames()}
+          onClick={() => generateNames(selectedRace, selectedGender)}
         >
           Re-Roll Names
         </button>

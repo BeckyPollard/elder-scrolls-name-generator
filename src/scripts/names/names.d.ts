@@ -11,6 +11,6 @@ export const dunmerMaleNames = [string];
 export const dunmerAllNames = [string];
 export const dunmerFamilyNames = [string];
 
-export const orsimerFemaleNames = [string];
-export const orsimerMaleNames = [string];
-export const orsimerAllNames = [string];
+export const orcFemaleNames = [string];
+export const orcMaleNames = [string];
+export const orcAllNames = [string];
