@@ -249,3 +249,45 @@ axios.get('https://en.uesp.net/wiki/Lore:Orc_Names').then((res) => {
   names.write(`export const orcMaleNames = [${uniqueMaleNames}]; \n\n`);
   names.write(`export const orcAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
 });
+
+//// KHAJIIT NAMES
+axios.get('https://en.uesp.net/wiki/Lore:Khajiit_Names').then((res) => {
+  const $ = cheerio.load(res.data);
+
+  // GET NAMES BY GENDER
+  const namesFemale = [];
+  $('#Female_Khajiit_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesFemale.push(`"${name}"`);
+      }
+    });
+  const namesMale = [];
+  $('#Male_Khajiit_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesMale.push(`"${name}"`);
+      }
+    });
+
+  // remove dup names
+  const onlyUniqueNames = (val, index, test) => {
+    return test.indexOf(val) === index;
+  };
+  const uniqueFemaleNames = namesFemale.filter(onlyUniqueNames);
+  const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
+
+  names.write(`export const khajiitFemaleNames = [${uniqueFemaleNames}]; \n\n`);
+  names.write(`export const khajiitMaleNames = [${uniqueMaleNames}]; \n\n`);
+  names.write(`export const khajiitAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+});

@@ -31,6 +31,9 @@ export default function Generator() {
           case('bosmer'):
             generatedNames.push(`${randFirstName}`);
             break;
+          case('khajiit'):
+            generatedNames.push(`${randFirstName}`);
+            break;
           case('orc'):
             const prefixesMasc = ['gro-', 'gro-', 'gro-', 'gro-', 'gor-']; //gor is rare
             const prefixes = ['gra-', 'gra-', 'gra-', 'gra-', 'gro-', 'gro-', 'gro-', 'gor-']; //keeping gor rare idk
@@ -67,9 +70,12 @@ export default function Generator() {
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerFemaleNames));
           break;
+        case('khajiit'):
+          setGeneratedNamed(randomNames(names.khajiitFemaleNames));
+          break;
         case('orc'):
           setGeneratedNamed(randomNames(names.orcFemaleNames));
-          break;
+          break;  
       }
     } else if (gender === 'male') {
       switch(race) {
@@ -84,6 +90,9 @@ export default function Generator() {
           break;
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerMaleNames));
+          break;
+        case('khajiit'):
+          setGeneratedNamed(randomNames(names.khajiitMaleNames));
           break;
         case('orc'):
           setGeneratedNamed(randomNames(names.orcMaleNames));
@@ -102,6 +111,9 @@ export default function Generator() {
           break;
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerAllNames));
+          break;
+        case('khajiit'):
+          setGeneratedNamed(randomNames(names.khajiitAllNames));
           break;
         case('orc'):
           setGeneratedNamed(randomNames(names.orcAllNames));
@@ -196,6 +208,15 @@ export default function Generator() {
             defaultChecked={selectedRace === 'dunmer'}
           />
           <label htmlFor='options-race-dunmer'>Dunmer</label>
+
+          <input
+            type='radio'
+            id='options-race-khajiit'
+            name='race'
+            onChange={(e) => setSelectedRace(e.target.value)}
+            value='khajiit'
+          />
+          <label htmlFor='options-race-khajiit'>Khajiit</label>
 
           <input
             type='radio'
