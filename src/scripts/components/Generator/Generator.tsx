@@ -6,175 +6,184 @@ export default function Generator() {
   const [selectedRace, setSelectedRace] = useState<string>('dunmer');
   const [generatedNames, setGeneratedNamed] = useState<any>([]);
 
-  const generateNames = (race: string, gender: string) => {
-    const randomNames = (arr: string[]) => {
-      let generatedNames: string[] = [];
+  const generateNames = (race: string, gender: string,) => { //TODO: i want to refactor this!!!!
+    const randomNames = (firstNames: string[], familyNames?: string[]) => {
+      let randomNames: string[] = [];
 
       for (let i = 0; i < 10; i++) {
-        let randFirstName = arr[Math.floor(Math.random() * arr.length)];
-        let randLastName;
+        // handle first names
+        let randFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
 
-        switch(race) { // handle family names
+        // handle family names
+        let randLastName;
+        switch(race) { 
           case('altmer'): // no family names
-            generatedNames.push(`${randFirstName}`);
-            break;
+            randomNames.push(`${randFirstName}`);
+          break;
           case('argonian'): // no family names
-            generatedNames.push(`${randFirstName}`);
-            break;
+            randomNames.push(`${randFirstName}`);
+          break;
           case('bosmer'): // no family names
-            generatedNames.push(`${randFirstName}`);
-            break;
+            randomNames.push(`${randFirstName}`);
+          break;
           case('breton'):
-            randLastName = names.bretonFamilyNames[Math.floor(Math.random() * names.bretonFamilyNames.length)];
-            generatedNames.push(`${randFirstName} ${randLastName}`);
-            break;
-          case('dunmer'):
-            randLastName = names.dunmerFamilyNames[Math.floor(Math.random() * names.dunmerFamilyNames.length)];
-            generatedNames.push(`${randFirstName} ${randLastName}`);
-            break;
-          case('imperial'):
-            randLastName = names.imperialFamilyNames[Math.floor(Math.random() * names.imperialFamilyNames.length)];
-            generatedNames.push(`${randFirstName} ${randLastName}`);
-            break;
-          case('khajiit'): // no family names
-            generatedNames.push(`${randFirstName}`);
-            break;
-          case('nord'):
-            randLastName = names.nordFamilyNames[Math.floor(Math.random() * names.nordFamilyNames.length)];
-            generatedNames.push(`${randFirstName} ${randLastName}`);
-            break;
-          case('orc'): //orc family name prefixes
-            const prefixesMasc = ['gro-', 'gro-', 'gro-', 'gro-', 'gor-']; //gor is rare
-            const prefixes = ['gra-', 'gra-', 'gra-', 'gra-', 'gro-', 'gro-', 'gro-', 'gor-']; //keeping gor rare idk
-            if (gender === 'female') {
-              randLastName = `gra-${names.orcFemaleNames[Math.floor(Math.random() * names.orcFemaleNames.length)]}`;
-            }
-            if (gender === 'male') {
-              const prefix = prefixesMasc[Math.floor(Math.random() * prefixesMasc.length)]
-              randLastName = `${prefix}${names.orcMaleNames[Math.floor(Math.random() * names.orcMaleNames.length)]}`;
+            if (familyNames) {
+              randLastName = familyNames[Math.floor(Math.random() * familyNames.length)];
+              randomNames.push(`${randFirstName} ${randLastName}`);
             } else {
-              const prefix = prefixes[Math.floor(Math.random() * prefixes.length)]
-              randLastName = `${prefix}${names.orcAllNames[Math.floor(Math.random() * names.orcAllNames.length)]}`;
-            }
-            generatedNames.push(`${randFirstName} ${randLastName}`);
-            break;
-            case('redguard'): //redguard, sometimes family name, sometimes with prefixes
-              const familyName = Math.floor(Math.random() * 5);
-              if (familyName === 3) {
-                randLastName = names.redguardFamilyNames[Math.floor(Math.random() * names.redguardFamilyNames.length)];
-                generatedNames.push(`${randFirstName} ${randLastName}`);
-              } else if (familyName === 4) {
-                const prefix = ['at-', 'af-'][(Math.floor(Math.random() * 2))];
-                randLastName = `${prefix}${names.redguardAllNames[Math.floor(Math.random() * names.redguardAllNames.length)]}`;
-                generatedNames.push(`${randFirstName} ${randLastName}`);
+              randomNames.push(`${randFirstName}`);
+            };
+          break;
+          case('dunmer'):
+            if (familyNames) {
+              randLastName = familyNames[Math.floor(Math.random() * familyNames.length)];
+              randomNames.push(`${randFirstName} ${randLastName}`);
+            } else {
+              randomNames.push(`${randFirstName}`);
+            };
+          break;
+          case('imperial'):
+            if (familyNames) {
+              randLastName = familyNames[Math.floor(Math.random() * familyNames.length)];
+              randomNames.push(`${randFirstName} ${randLastName}`);
+            } else {
+              randomNames.push(`${randFirstName}`);
+            };
+          break;
+          case('khajiit'): // no family names
+            randomNames.push(`${randFirstName}`);
+          break;
+          case('nord'):
+            if (familyNames) {
+              randLastName = familyNames[Math.floor(Math.random() * familyNames.length)];
+              randomNames.push(`${randFirstName} ${randLastName}`);
+            } else {
+              randomNames.push(`${randFirstName}`);
+            };
+          break;
+          case('orc'): //orc family name prefixes
+            if (familyNames) {
+              const prefixesMasc = ['gro-', 'gro-', 'gro-', 'gro-', 'gor-']; //gor is rare
+              const prefixes = ['gra-', 'gra-', 'gra-', 'gra-', 'gro-', 'gro-', 'gro-', 'gor-']; //keeping gor rare idk
+              if (gender === 'female') {
+                randLastName = `gra-${familyNames[Math.floor(Math.random() * familyNames.length)]}`;
+              } else if (gender === 'male') {
+                const prefix = prefixesMasc[Math.floor(Math.random() * prefixesMasc.length)];
+                randLastName = `${prefix}${familyNames[Math.floor(Math.random() * familyNames.length)]}`;
               } else {
-                generatedNames.push(`${randFirstName}`);
-              }
-            break;
+                const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+                randLastName = `${prefix}${familyNames[Math.floor(Math.random() * familyNames.length)]}`;
+              };
+              randomNames.push(`${randFirstName} ${randLastName}`);
+            };
+          break;
+          case('redguard'): //redguard, sometimes family name, sometimes with prefixes
+            if (familyNames) {
+              const familyNameChance = Math.floor(Math.random() * 5);
+              if (familyNameChance === 3) { //use name from lore
+                randLastName = familyNames[Math.floor(Math.random() * familyNames.length)];
+                randomNames.push(`${randFirstName} ${randLastName}`);
+              } else if (familyNameChance === 4) { //make new name
+                const prefix = ['at-', 'af-'][(Math.floor(Math.random() * 2))];
+                randLastName = `${prefix}${familyNames[Math.floor(Math.random() * familyNames.length)]}`;
+                randomNames.push(`${randFirstName} ${randLastName}`);
+              } else {
+                randomNames.push(`${randFirstName}`);
+              };
+            } else {
+              randomNames.push(`${randFirstName}`);
+            };
+          break;
         };
       };
-      return generatedNames;
+      return randomNames;
     };
 
-    if (gender === 'female') {
-      switch(race) {
-        case('altmer'):
+    switch(race) {
+      case('altmer'):
+        if (gender === 'female') {
           setGeneratedNamed(randomNames(names.altmerFemaleNames));
-          break;
-        case('argonian'):
-          setGeneratedNamed(randomNames(names.argonianFemaleNames));
-          break;
-        case('bosmer'):
-          setGeneratedNamed(randomNames(names.bosmerFemaleNames));
-          break;
-        case('breton'):
-          setGeneratedNamed(randomNames(names.bretonFemaleNames));
-          break;
-        case('dunmer'):
-          setGeneratedNamed(randomNames(names.dunmerFemaleNames));
-          break;
-        case('imperial'):
-          setGeneratedNamed(randomNames(names.imperialFemaleNames));
-          break;
-        case('khajiit'):
-          setGeneratedNamed(randomNames(names.khajiitFemaleNames));
-          break;
-        case('nord'):
-          setGeneratedNamed(randomNames(names.nordFemaleNames));
-          break;
-        case('orc'):
-          setGeneratedNamed(randomNames(names.orcFemaleNames));
-          break;  
-        case('redguard'):
-          setGeneratedNamed(randomNames(names.redguardFemaleNames));
-          break;  
-      }
-    } else if (gender === 'male') {
-      switch(race) {
-        case('altmer'):
+        } else if (gender === 'male') {
           setGeneratedNamed(randomNames(names.altmerMaleNames));
-          break;
-        case('argonian'):
-          setGeneratedNamed(randomNames(names.argonianMaleNames));
-          break;
-        case('bosmer'):
-          setGeneratedNamed(randomNames(names.bosmerMaleNames));
-          break;
-        case('breton'):
-          setGeneratedNamed(randomNames(names.bretonMaleNames));
-          break;
-        case('dunmer'):
-          setGeneratedNamed(randomNames(names.dunmerMaleNames));
-          break;
-        case('imperial'):
-          setGeneratedNamed(randomNames(names.imperialMaleNames));
-          break;
-        case('khajiit'):
-          setGeneratedNamed(randomNames(names.khajiitMaleNames));
-          break;
-        case('nord'):
-          setGeneratedNamed(randomNames(names.nordMaleNames));
-          break;
-        case('orc'):
-          setGeneratedNamed(randomNames(names.orcMaleNames));
-          break;
-        case('redguard'):
-          setGeneratedNamed(randomNames(names.redguardMaleNames));
-          break;
-      }
-    } else {
-      switch(race) {
-        case('altmer'):
+        } else {
           setGeneratedNamed(randomNames(names.altmerAllNames));
-          break;
-        case('argonian'):
+        }
+      break;
+      case('argonian'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.argonianFemaleNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.argonianMaleNames));
+        } else {
           setGeneratedNamed(randomNames(names.argonianAllNames));
-          break;
-        case('bosmer'):
+        }
+      break;
+      case('bosmer'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.bosmerFemaleNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.bosmerMaleNames));
+        } else {
           setGeneratedNamed(randomNames(names.bosmerAllNames));
-          break;
-        case('breton'):
-          setGeneratedNamed(randomNames(names.bretonAllNames));
-          break;
-        case('dunmer'):
-          setGeneratedNamed(randomNames(names.dunmerAllNames));
-          break;
-        case('imperial'):
-          setGeneratedNamed(randomNames(names.imperialAllNames));
-          break;
-        case('khajiit'):
-          setGeneratedNamed(randomNames(names.khajiitAllNames));
-          break;
-        case('nord'):
-          setGeneratedNamed(randomNames(names.nordAllNames));
-          break;
-        case('orc'):
-          setGeneratedNamed(randomNames(names.orcAllNames));
-          break;
-        case('redguard'):
-          setGeneratedNamed(randomNames(names.redguardAllNames));
-          break;
-      };
+        }
+      break;
+      case('breton'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.bretonFemaleNames, names.bretonFamilyNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.bretonMaleNames, names.bretonFamilyNames));
+        } else {
+          setGeneratedNamed(randomNames(names.bretonAllNames, names.bretonFamilyNames));
+        }
+      break;
+      case('dunmer'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.dunmerFemaleNames, names.dunmerFamilyNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.dunmerMaleNames, names.dunmerFamilyNames));
+        } else {
+          setGeneratedNamed(randomNames(names.dunmerAllNames, names.dunmerFamilyNames));
+        }
+      break;
+      case('imperial'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.imperialFemaleNames, names.imperialFamilyNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.imperialMaleNames, names.imperialFamilyNames));
+        } else {
+          setGeneratedNamed(randomNames(names.imperialAllNames, names.imperialFamilyNames));
+        }
+      break;
+      case('khajiit'):
+        setGeneratedNamed(randomNames(names.khajiitFemaleNames));
+      break;
+      case('nord'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.nordFemaleNames, names.nordFamilyNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.nordMaleNames, names.nordFamilyNames));
+        } else {
+          setGeneratedNamed(randomNames(names.nordAllNames, names.nordFamilyNames));
+        }
+      break;
+      case('orc'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.orcFemaleNames, names.orcFemaleNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.orcMaleNames, names.orcMaleNames));
+        } else {
+          setGeneratedNamed(randomNames(names.orcAllNames, names.orcAllNames));
+        }
+      break; 
+      case('redguard'):
+        if (gender === 'female') {
+          setGeneratedNamed(randomNames(names.redguardFemaleNames, names.redguardAllNames));
+        } else if (gender === 'male') {
+          setGeneratedNamed(randomNames(names.redguardMaleNames, names.redguardAllNames));
+        } else {
+          setGeneratedNamed(randomNames(names.redguardAllNames, names.redguardAllNames));
+        }
+      break;
     };
   };
 
@@ -184,7 +193,7 @@ export default function Generator() {
 
   return (
     <>
-      <div className='generatedNames'>
+      <div className='generatedNames'> {/* TODO: put this in own component? */}
         <h2>Generated names:</h2>
         <ul id='names'>
           {generatedNames.map((name: string) => (
@@ -193,7 +202,7 @@ export default function Generator() {
         </ul>
       </div>
 
-      <form className='options'>
+      <form className='options'> {/* TODO: put this in own component? */}
         <fieldset>
           <legend>Gender:</legend>
           <input
@@ -225,7 +234,6 @@ export default function Generator() {
           <label htmlFor='options-gender-male'>Masculine</label>
         </fieldset>
 
-        {/* RACE MENU */}
         <fieldset>
           <legend>Race:</legend>
           <input
