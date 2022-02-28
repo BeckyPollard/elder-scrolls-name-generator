@@ -24,6 +24,9 @@ export default function Generator() {
             // no family names
             generatedNames.push(`${randFirstName}`);
             break;
+          case('bosmer'):
+            generatedNames.push(`${randFirstName}`);
+            break;
           case('breton'):
             randLastName = names.bretonFamilyNames[Math.floor(Math.random() * names.bretonFamilyNames.length)];
             generatedNames.push(`${randFirstName} ${randLastName}`);
@@ -32,13 +35,14 @@ export default function Generator() {
             randLastName = names.dunmerFamilyNames[Math.floor(Math.random() * names.dunmerFamilyNames.length)];
             generatedNames.push(`${randFirstName} ${randLastName}`);
             break;
-          case('bosmer'):
-            generatedNames.push(`${randFirstName}`);
+          case('imperial'):
+            randLastName = names.imperialFamilyNames[Math.floor(Math.random() * names.imperialFamilyNames.length)];
+            generatedNames.push(`${randFirstName} ${randLastName}`);
             break;
           case('khajiit'):
             generatedNames.push(`${randFirstName}`);
             break;
-          case('orc'):
+          case('orc'): //special family name prefixes
             const prefixesMasc = ['gro-', 'gro-', 'gro-', 'gro-', 'gor-']; //gor is rare
             const prefixes = ['gra-', 'gra-', 'gra-', 'gra-', 'gro-', 'gro-', 'gro-', 'gor-']; //keeping gor rare idk
             if (gender === 'female') {
@@ -56,7 +60,6 @@ export default function Generator() {
             break;
         };
       };
-      
       return generatedNames;
     };
 
@@ -77,6 +80,9 @@ export default function Generator() {
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerFemaleNames));
           break;
+        case('imperial'):
+          setGeneratedNamed(randomNames(names.imperialFemaleNames));
+          break;
         case('khajiit'):
           setGeneratedNamed(randomNames(names.khajiitFemaleNames));
           break;
@@ -95,11 +101,14 @@ export default function Generator() {
         case('bosmer'):
           setGeneratedNamed(randomNames(names.bosmerMaleNames));
           break;
+        case('breton'):
+          setGeneratedNamed(randomNames(names.bretonMaleNames));
+          break;
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerMaleNames));
           break;
-        case('breton'):
-          setGeneratedNamed(randomNames(names.bretonMaleNames));
+        case('imperial'):
+          setGeneratedNamed(randomNames(names.imperialMaleNames));
           break;
         case('khajiit'):
           setGeneratedNamed(randomNames(names.khajiitMaleNames));
@@ -124,6 +133,9 @@ export default function Generator() {
           break;
         case('dunmer'):
           setGeneratedNamed(randomNames(names.dunmerAllNames));
+          break;
+        case('imperial'):
+          setGeneratedNamed(randomNames(names.imperialAllNames));
           break;
         case('khajiit'):
           setGeneratedNamed(randomNames(names.khajiitAllNames));
@@ -230,6 +242,16 @@ export default function Generator() {
             defaultChecked={selectedRace === 'dunmer'}
           />
           <label htmlFor='options-race-dunmer'>Dunmer</label>
+
+          <input
+            type='radio'
+            id='options-race-imperial'
+            name='race'
+            value='imperial'
+            onChange={(e) => setSelectedRace(e.target.value)}
+            defaultChecked={selectedRace === 'imperial'}
+          />
+          <label htmlFor='options-race-imperial'>Imperial</label>
 
           <input
             type='radio'

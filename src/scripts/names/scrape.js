@@ -174,7 +174,7 @@ axios.get('https://en.uesp.net/wiki/Lore:Breton_Names').then((res) => {
     .each((index, element) => {
       const name = $(element).text();
       // simple do not push numbers check
-      if(name.length > 2 && name !== 'tomb') {
+      if(name.length > 2) {
         namesFamily.push(`"${name}"`);
       }
     });
@@ -262,7 +262,64 @@ axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
   names.write(`export const dunmerFemaleNames = [${uniqueFemaleNames}]; \n\n`);
   names.write(`export const dunmerMaleNames = [${uniqueMaleNames}]; \n\n`);
   names.write(`export const dunmerAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
-  names.write(`export const dunmerFamilyNames = [${uniqueFamilyNames}]; \n`);
+  names.write(`export const dunmerFamilyNames = [${uniqueFamilyNames}]; \n\n`);
+});
+
+//// IMPERIAL NAMES
+axios.get('https://en.uesp.net/wiki/Lore:Imperial_Names').then((res) => {
+  const $ = cheerio.load(res.data);
+
+  const namesFemale = [];
+  $('#Female_Imperial_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesFemale.push(`"${name}"`);
+      }
+    });
+  const namesMale = [];
+  $('#Male_Imperial_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesMale.push(`"${name}"`);
+      }
+    });
+  const namesFamily = [];
+  $('#Imperial_Family_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      if(name === 'Clairene Auzin') {
+        return;
+      };
+      if(name.length > 1) {
+        namesFamily.push(`"${name}"`);
+      }
+    });
+
+  // remove dup names
+  const onlyUniqueNames = (val, index, test) => {
+    return test.indexOf(val) === index;
+  };
+  const uniqueFemaleNames = namesFemale.filter(onlyUniqueNames);
+  const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
+  const uniqueFamilyNames = namesFamily.filter(onlyUniqueNames);
+
+  names.write(`export const imperialFemaleNames = [${uniqueFemaleNames}]; \n\n`);
+  names.write(`export const imperialMaleNames = [${uniqueMaleNames}]; \n\n`);
+  names.write(`export const imperialAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+  names.write(`export const imperialFamilyNames = [${uniqueFamilyNames}]; \n`);
 });
 
 //// ORSIMER NAMES

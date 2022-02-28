@@ -20,6 +20,11 @@ export const dunmerMaleNames = [string];
 export const dunmerAllNames = [string];
 export const dunmerFamilyNames = [string];
 
+export const imperialFemaleNames = [string];
+export const imperialMaleNames = [string];
+export const imperialAllNames = [string];
+export const imperialFamilyNames = [string];
+
 export const khajiitFemaleNames = [string];
 export const khajiitMaleNames = [string];
 export const khajiitAllNames = [string];
