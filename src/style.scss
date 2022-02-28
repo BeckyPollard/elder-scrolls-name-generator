@@ -1,9 +1,9 @@
-@import './stylePartials/meyerReset.scss';
-@import './stylePartials/variables.scss';
-@import './stylePartials/typography.scss';
-@import './stylePartials/header.scss';
-@import './stylePartials/main.scss';
-@import './stylePartials/footer.scss';
+@import './styles/meyerReset.scss';
+@import './styles/variables.scss';
+@import './styles/typography.scss';
+@import './styles/header.scss';
+@import './styles/main.scss';
+@import './styles/footer.scss';
 
 body {
   background: $secondary;
@@ -54,13 +54,3 @@ body {
     outline: none;
   }
 }
-
-// Me: "Hoo! Work is so harsh!"
-// Employed: stressed, depressed.
-// Jobless: stressed, depressed.
-//
-// Me: "I hate seasonal affective disorder, yuck!"
-// Winter: sad.
-// Summer: sad.
-//
-// Nope. There's definitely not a deeper problem cooking here, no sir-ee. Enjoying a normal time. Thriving. 🤠

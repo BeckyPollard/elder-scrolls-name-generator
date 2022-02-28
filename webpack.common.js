@@ -3,22 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/main.js',
+    main: './src/main.tsx',
+    vendor: ['react', 'react-dom'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
-      favicon: './src/favicon.ico',
+      favicon: './src/assets/images/favicon.ico',
     }),
-    // ADD FOR EACH NEW HTML PAGE
-    // new HtmlWebpackPlugin({
-    //   template: './src/name.html',
-    //   filename: 'name.html',
-    //   favicon: './src/favicon.ico',
-    // }),
-    // TODO: better auto way of handling html pages?
   ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },
   module: {
     rules: [
       {
@@ -28,25 +25,26 @@ module.exports = {
         ],
       },
       {
-        test: /\.(svg|png|jpg|jpeg)$/,
-        use: {
-          loader: 'file-loader', //require assets linked in html
-          options: {
-            name: '[name]-[hash].[ext]',
-            outputPath: 'assets/images',
-          },
-        },
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
+      },
+      {
+        test: /\.(svg|png|jp?eg|gif|ico)$/i,
+        type: 'asset/resource',
       },
       {
         test: /\.(woff|woff2|ttf|otf|eot)$/,
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]',
             outputPath: 'assets/fonts',
           },
         },
       },
     ],
+  },
+  devtool: 'inline-source-map',
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
 };

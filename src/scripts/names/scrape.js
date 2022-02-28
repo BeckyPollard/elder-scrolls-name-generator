@@ -3,8 +3,20 @@ const axios = require('axios'); // to get data from web
 const cheerio = require('cheerio'); // to parse web page
 const fs = require('fs'); // to write files with node
 
-const writeStream = fs.createWriteStream('./src/scriptPartials/names.js');
+// files to write:
+const altmerNames = fs.createWriteStream('./altmer.js');
+const argonianNames = fs.createWriteStream('./argonian.js');
+const bosmerNames = fs.createWriteStream('./bosmer.js');
+const bretonNames = fs.createWriteStream('./breton.js');
+const dunmerNames = fs.createWriteStream('./dunmer.js');
+const imperialNames = fs.createWriteStream('./imperial.js');
+const khajiitNames = fs.createWriteStream('./khajiit.js');
+const nordNames = fs.createWriteStream('./nord.js');
+const orcNames = fs.createWriteStream('./orc.js');
+const redguardNames = fs.createWriteStream('./redguard.js');
 
+// GET NAMES
+//// DUNMER NAMES
 axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
   const $ = cheerio.load(res.data);
 
@@ -17,7 +29,7 @@ axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
     .each((index, element) => {
       const name = $(element).text();
       // simple do not push numbers check
-      if (name.length > 1) {
+      if(name.length > 1) {
         namesFemale.push(`"${name}"`);
       }
     });
@@ -31,13 +43,13 @@ axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
     .each((index, element) => {
       const name = $(element).text();
       // simple do not push numbers check
-      if (name.length > 1) {
+      if(name.length > 1) {
         namesMale.push(`"${name}"`);
       }
     });
 
   // GET FAMILY DUNMER NAMES (SETTLED AND NOMADIC)
-  // can't scrape them all, as most are not links
+  // can't scrape them all, but most are not links
   const namesFamily = [];
   $('#Dunmer_Family_Names')
     .parent()
@@ -46,7 +58,7 @@ axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
     .each((index, element) => {
       const name = $(element).text();
       // simple do not push numbers check
-      if (name.length > 2 && name !== 'tomb') {
+      if(name.length > 2 && name !== 'tomb') {
         namesFamily.push(`"${name}"`);
       }
     });
@@ -57,7 +69,7 @@ axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
     .each((index, element) => {
       const name = $(element).text();
       // simple do not push numbers check
-      if (name.length > 2 && name !== 'tomb') {
+      if(name.length > 2 && name !== 'tomb') {
         namesFamily.push(`"${name}"`);
       }
     });
@@ -70,7 +82,8 @@ axios.get('https://en.uesp.net/wiki/Lore:Dunmer_Names').then((res) => {
   const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
   const uniqueFamilyNames = namesFamily.filter(onlyUniqueNames);
 
-  writeStream.write(`const femaleDunmerNames = [${uniqueFemaleNames}] \n\n`);
-  writeStream.write(`const maleDunmerNames = [${uniqueMaleNames}] \n\n`);
-  writeStream.write(`const familyDunmerNames = [${uniqueFamilyNames}] \n\n`);
+  dunmerNames.write(`export const femaleNames = [${uniqueFemaleNames}]; \n\n`);
+  dunmerNames.write(`export const maleNames = [${uniqueMaleNames}]; \n\n`);
+  dunmerNames.write(`export const allNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+  dunmerNames.write(`export const familyNames = [${uniqueFamilyNames}]; \n`);
 });
