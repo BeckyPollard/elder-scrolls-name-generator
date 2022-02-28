@@ -319,7 +319,7 @@ axios.get('https://en.uesp.net/wiki/Lore:Imperial_Names').then((res) => {
   names.write(`export const imperialFemaleNames = [${uniqueFemaleNames}]; \n\n`);
   names.write(`export const imperialMaleNames = [${uniqueMaleNames}]; \n\n`);
   names.write(`export const imperialAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
-  names.write(`export const imperialFamilyNames = [${uniqueFamilyNames}]; \n`);
+  names.write(`export const imperialFamilyNames = [${uniqueFamilyNames}]; \n\n`);
 });
 
 //// ORSIMER NAMES
@@ -404,4 +404,74 @@ axios.get('https://en.uesp.net/wiki/Lore:Khajiit_Names').then((res) => {
   names.write(`export const khajiitFemaleNames = [${uniqueFemaleNames}]; \n\n`);
   names.write(`export const khajiitMaleNames = [${uniqueMaleNames}]; \n\n`);
   names.write(`export const khajiitAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+});
+
+//// Nord NAMES
+axios.get('https://en.uesp.net/wiki/Lore:Nord_Names').then((res) => {
+  const $ = cheerio.load(res.data);
+
+  const namesFemale = [];
+  $('#Female_Nord_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesFemale.push(`"${name}"`);
+      }
+    });
+  const namesMale = [];
+  $('#Male_Nord_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      // simple do not push numbers check
+      if(name.length > 1) {
+        namesMale.push(`"${name}"`);
+      }
+    });
+  const namesFamily = [];
+  const deleteTheseNames = [
+    'Crazy', 'Fetid', 'Lucky', 'Bald', 'Boss', 'Ferocious', 'Loremaster', 'Mad', 'Purifier', 'Sleepy', 'Smiling', 'Sober', 'Wandering', 'Big',
+  ];
+  $('#Clan_Names_and_Titles')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      if(deleteTheseNames.indexOf(name) !== -1) { //soft-check remove name prefix titles, like "Lucky Lorenz"
+        return;
+      };
+      if(name.length > 1) {
+        namesFamily.push(`"${name}"`);
+      };
+    });
+  $('#Nord_Skaal_Names')
+    .parent()
+    .nextUntil('h2')
+    .children('a')
+    .each((index, element) => {
+      const name = $(element).text();
+      if(name.length > 1) {
+        namesFamily.push(`"${name}"`);
+      }
+    });
+
+  // remove dup names
+  const onlyUniqueNames = (val, index, test) => {
+    return test.indexOf(val) === index;
+  };
+  const uniqueFemaleNames = namesFemale.filter(onlyUniqueNames);
+  const uniqueMaleNames = namesMale.filter(onlyUniqueNames);
+  const uniqueFamilyNames = namesFamily.filter(onlyUniqueNames);
+
+  names.write(`export const nordFemaleNames = [${uniqueFemaleNames}]; \n\n`);
+  names.write(`export const nordMaleNames = [${uniqueMaleNames}]; \n\n`);
+  names.write(`export const nordAllNames = [${uniqueMaleNames.concat(uniqueFemaleNames)}]; \n\n`);
+  names.write(`export const nordFamilyNames = [${uniqueFamilyNames}]; \n\n`);
 });

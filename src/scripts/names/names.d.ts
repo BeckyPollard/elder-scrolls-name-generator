@@ -29,6 +29,11 @@ export const khajiitFemaleNames = [string];
 export const khajiitMaleNames = [string];
 export const khajiitAllNames = [string];
 
+export const nordFemaleNames = [string];
+export const nordMaleNames = [string];
+export const nordAllNames = [string];
+export const nordFamilyNames = [string];
+
 export const orcFemaleNames = [string];
 export const orcMaleNames = [string];
 export const orcAllNames = [string];

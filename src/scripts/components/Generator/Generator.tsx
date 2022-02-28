@@ -14,17 +14,14 @@ export default function Generator() {
         let randFirstName = arr[Math.floor(Math.random() * arr.length)];
         let randLastName;
 
-        // handle family names
-        switch(race) {
-          case('altmer'):
-            // no family names
+        switch(race) { // handle family names
+          case('altmer'): // no family names
             generatedNames.push(`${randFirstName}`);
             break;
-          case('argonian'):
-            // no family names
+          case('argonian'): // no family names
             generatedNames.push(`${randFirstName}`);
             break;
-          case('bosmer'):
+          case('bosmer'): // no family names
             generatedNames.push(`${randFirstName}`);
             break;
           case('breton'):
@@ -39,8 +36,12 @@ export default function Generator() {
             randLastName = names.imperialFamilyNames[Math.floor(Math.random() * names.imperialFamilyNames.length)];
             generatedNames.push(`${randFirstName} ${randLastName}`);
             break;
-          case('khajiit'):
+          case('khajiit'): // no family names
             generatedNames.push(`${randFirstName}`);
+            break;
+          case('nord'):
+            randLastName = names.nordFamilyNames[Math.floor(Math.random() * names.nordFamilyNames.length)];
+            generatedNames.push(`${randFirstName} ${randLastName}`);
             break;
           case('orc'): //special family name prefixes
             const prefixesMasc = ['gro-', 'gro-', 'gro-', 'gro-', 'gor-']; //gor is rare
@@ -86,6 +87,9 @@ export default function Generator() {
         case('khajiit'):
           setGeneratedNamed(randomNames(names.khajiitFemaleNames));
           break;
+        case('nord'):
+          setGeneratedNamed(randomNames(names.nordFemaleNames));
+          break;
         case('orc'):
           setGeneratedNamed(randomNames(names.orcFemaleNames));
           break;  
@@ -113,6 +117,9 @@ export default function Generator() {
         case('khajiit'):
           setGeneratedNamed(randomNames(names.khajiitMaleNames));
           break;
+        case('nord'):
+          setGeneratedNamed(randomNames(names.nordMaleNames));
+          break;
         case('orc'):
           setGeneratedNamed(randomNames(names.orcMaleNames));
           break;
@@ -139,6 +146,9 @@ export default function Generator() {
           break;
         case('khajiit'):
           setGeneratedNamed(randomNames(names.khajiitAllNames));
+          break;
+        case('nord'):
+          setGeneratedNamed(randomNames(names.nordAllNames));
           break;
         case('orc'):
           setGeneratedNamed(randomNames(names.orcAllNames));
@@ -261,6 +271,15 @@ export default function Generator() {
             value='khajiit'
           />
           <label htmlFor='options-race-khajiit'>Khajiit</label>
+
+          <input
+            type='radio'
+            id='options-race-nord'
+            name='race'
+            onChange={(e) => setSelectedRace(e.target.value)}
+            value='nord'
+          />
+          <label htmlFor='options-race-nord'>Nord</label>
 
           <input
             type='radio'
