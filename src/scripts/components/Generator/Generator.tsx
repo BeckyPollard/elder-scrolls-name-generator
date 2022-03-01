@@ -189,7 +189,10 @@ export default function Generator() {
 
   useEffect(() => {
     generateNames(selectedRace, selectedGender);
-  }, [selectedGender, selectedRace])
+  }, [selectedGender, selectedRace]);
+
+  const totalFirstNames = (names.altmerAllNames.length + names.argonianAllNames.length + names.bosmerAllNames.length + names.bretonAllNames.length + names.dunmerAllNames.length + names.imperialAllNames.length + names.khajiitAllNames.length + names.nordAllNames.length + names.orcAllNames.length + names.redguardAllNames.length); // 2022.02.28 = 19,278 names!!!
+  console.log(`⭐️ Fun fact: from all the races of Tamriel there are about ${totalFirstNames} first names to choose from here!`);
 
   return (
     <>
