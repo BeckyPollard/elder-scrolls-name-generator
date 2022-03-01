@@ -2,9 +2,9 @@
 
 <img src="./preview.png" width="400">
 
-Names scraped from [The Unofficial Elder Scrolls Pages](https://en.uesp.net/wiki/Lore:Dunmer_Names) wiki.
+Names scraped from [The Unofficial Elder Scrolls Pages](https://en.uesp.net/wiki/Lore:Names) wiki.
 
-Deployed live on Netlify: [dunmer-name-generator.netlify.app](https://dunmer-name-generator.netlify.app/).
+Deployed live on Netlify: [tes-name-generator.netlify.app](https://tes-name-generator.netlify.app/).
 
 ### Why
 
