@@ -16,4 +16,4 @@ The file [scrape.js](./scrape.js) is to be run with node in your terminal, with 
 This file connests to the UESP page [Names Pages](https://en.uesp.net/wiki/Lore:Names) for each playable race with Axios, and uses Cheerio to parse the result. To keep things simple the file looks for instances of names within anchor tags and pushes them to an array. Using Node's File System API those arrays are output to a file [names.js](./src/names.js) for use in the generator.
 
 ### Future Features
-- Add more TES races to the name generator!
+- Add some lore context for the names below the options, like info on Orcish prefixes and Redguard titles.
