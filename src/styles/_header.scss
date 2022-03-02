@@ -5,9 +5,13 @@ header {
   div.wrapper {
     display: flex;
     justify-content: space-between;
+    padding: 0;
     h1 {
       display: inline-block;
       margin-right: 2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 0;
       @media only screen and (max-width: 570px) {
         width: 100%;
         text-align: center;
