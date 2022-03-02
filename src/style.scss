@@ -5,10 +5,16 @@
 @import './styles/main.scss';
 @import './styles/footer.scss';
 
-body {
-  background: $secondary;
-  @media only screen and (max-width: 600px) {
-    background: $bg;
+
+#app {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../src/assets/images/bg.jpg) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media only screen and (max-width: 650px) {
+    background: $bg !important;
   }
 }
 
@@ -45,6 +51,7 @@ body {
   border: none;
   font-family: $headersText;
   text-decoration: none;
+  background: #000;
   &:hover,
   &:focus {
     background: $focus;

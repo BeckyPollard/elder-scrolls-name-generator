@@ -8,12 +8,24 @@ header {
     h1 {
       display: inline-block;
       margin-right: 2rem;
+      @media only screen and (max-width: 570px) {
+        width: 100%;
+        text-align: center;
+      }
     }
     a {
-      background: $bg;
-      color: $black;
+      background: $focus;
+      color: #000;
       margin-top: 1.25rem;
-      @media only screen and (max-width: 520px) {
+      &:hover,
+      &:focus {
+        background: $bg;
+        color: $black;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        outline: none;
+      }
+      @media only screen and (max-width: 570px) {
         display: none;
       }
     }
