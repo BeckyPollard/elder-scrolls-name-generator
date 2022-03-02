@@ -1,6 +1,6 @@
 # The Elder Scrolls Character Name Generator [![Netlify Status](https://api.netlify.com/api/v1/badges/1679775e-f0ec-4cef-9612-0bd7edbc735f/deploy-status)](https://app.netlify.com/sites/dunmer-name-generator/deploys)
 
-<img src="https://user-images.githubusercontent.com/52248161/156271806-ec6ea862-6628-4bfb-84c5-f8ffb9db6578.png" width="400">
+<img src="https://user-images.githubusercontent.com/52248161/156279222-e08f6cf5-86cd-4901-bf78-7241d06434fd.png" width="400">
 
 Names scraped from [The Unofficial Elder Scrolls Pages](https://en.uesp.net/wiki/Lore:Names) wiki.
 
