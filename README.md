@@ -17,3 +17,7 @@ This file connests to the UESP page [Names Pages](https://en.uesp.net/wiki/Lore:
 
 ### Future Features
 - Add some lore context for the names below the options, like info on Orcish prefixes and Redguard titles.
+
+<br>
+
+<img src="./src/assets/images/dagger.gif"><img src="./src/assets/images/dagger.gif"><img src="./src/assets/images/dagger.gif"><img src="./src/assets/images/dagger.gif">
