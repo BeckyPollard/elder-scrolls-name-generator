@@ -9,10 +9,11 @@
 #app {
   height: 100%;
   width: 100%;
-  background-image: url(../src/assets/images/bg.jpg) !important;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  // background: $bg;
+  // background-image: url(../src/assets/images/bg.jpg) !important;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
   @media only screen and (max-width: 650px) {
     background: $bg !important;
   }
