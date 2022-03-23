@@ -1,7 +1,7 @@
 main {
   padding: 2rem;
   background: $bg;
-  box-shadow: rgba(0, 0, 0, 1) 4px 15px 25px 0px;
+  box-shadow: #777 4px 15px 25px 0px;
   display: block;
   @media only screen and (max-width: 650px) {
     box-shadow:none;
