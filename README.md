@@ -12,7 +12,7 @@ Because I keep making new characters and I want a quick lore-friendly name, or b
 
 ### Scraping
 
-The file [scrape.js](./scrape.js) is to be run with node in your terminal, with `node scrape.js`.
+The file [scrape.js](./src/scripts/names/scrape.js) is to be run with node in your terminal, with `node scrape.js`.
 This file connests to the UESP page [Names Pages](https://en.uesp.net/wiki/Lore:Names) for each playable race with Axios, and uses Cheerio to parse the result. To keep things simple the file looks for instances of names within anchor tags and pushes them to an array. There's sooo many names surely we won't miss a few, eh? Using Node's File System API those arrays are output to a file [names.js](./src/scripts/names/names.js) for use in the generator (big file!).
 
 ### Future Features
